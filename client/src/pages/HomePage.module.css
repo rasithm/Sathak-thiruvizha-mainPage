@@ -1774,7 +1774,7 @@
   position: relative;
 }
 
-@media (max-width: 1068px) {
+@media (max-width: 768px) {
   .devCard {
     position: static;
     margin: 24px auto 0;

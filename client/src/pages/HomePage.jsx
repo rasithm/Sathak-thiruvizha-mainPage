@@ -5,8 +5,8 @@ import EventCard from '../components/EventCard'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { CONFIG, DAYS, CATEGORY_FILTERS, STATS, CATEGORY_COLORS } from '../lib/config'
 import { getEvents } from '../lib/api'
-import frontImg from '../img/FRONT-MSAJCE.png'
-import backImg  from '../img/BACK-MSAJCE.png'
+import frontImg from '../img/FRONT-MSAJCE.webp'
+import backImg  from '../img/BACK-MSAJCE.webp'
 import rasithProfile from '../img/rasith-profile.jpg'
 import styles from './HomePage.module.css'
 
@@ -725,7 +725,7 @@ export default function HomePage() {
               <p className={styles.footerColTitle}>Contact</p>
               <div className={styles.footerContact}>
                 <a href="mailto:habibifest2026@msajce.edu.in" className={styles.footerContactItem}>
-                  <span>✉</span><span>habibifest2026@msajce.edu.in</span>
+                  <span>✉</span><span>studentassociation@msajce-edu.in</span>
                 </a>
                 <a href="tel:+919876543210" className={styles.footerContactItem}>
                   <span>📞</span><span>+91 98765 43210</span>

@@ -242,7 +242,7 @@ export default function AdminEventEdit() {
           <Field label="Icon (pick or type emoji)">
             <div className={styles.iconGrid}>
               {ICONS.map(ic => (
-                <button type="button" key={ic} type="button"
+                <button type="button" key={ic} 
                   className={`${styles.iconBtn} ${form.icon === ic ? styles.iconBtnActive : ''}`}
                   onClick={() => set('icon', ic)}>
                   {ic}

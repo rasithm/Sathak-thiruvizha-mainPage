@@ -6,7 +6,7 @@ import AdminLoginPage  from './pages/AdminLoginPage'
 import AdminDashboard  from './pages/AdminDashboard'
 import AdminEventEdit  from './pages/AdminEventEdit'
 import AdminMemberEdit from './pages/AdminMemberEdit'
-import DevelopersPage  from './pages/DevelopersPage'
+// import DevelopersPage  from './pages/DevelopersPage'
 import LeaderboardPage from './pages/LeaderboardPage'
 import OrganisersPage  from './pages/OrganisersPage'
 import Cursor          from './components/Cursor'
@@ -42,7 +42,7 @@ export default function App() {
         {/* Main app — moved from / to /home */}
         <Route path="/home"        element={<HomePage />} />
 
-        <Route path="/developers"        element={<DevelopersPage />} />
+        {/* <Route path="/developers"        element={<DevelopersPage />} /> */}
         <Route path="/leaderboard"       element={<LeaderboardPage />} />
         <Route path="/organisers"        element={<OrganisersPage />} />
         <Route path="/admin"             element={<AdminLoginPage />} />
