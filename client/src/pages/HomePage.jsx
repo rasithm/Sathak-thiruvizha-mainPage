@@ -59,7 +59,7 @@ function StatCard({ value, label, delay, index, displayOverride }) {
 const TICKER_ITEMS = [
   'Grand Opening', 'Code Blitz', 'Robo Race', 'Startup Pitch',
   'Cultural Night', 'Habibi-A-Thon', 'Street Dance Battle', 'Ramp Royale',
-  'Champions Gala', 'Paper Presentation', '₹10L+ Prize Pool', 'April 6–17 · Chennai', 'Sathak Thiruvizha 2026',
+  'Champions Gala', 'Paper Presentation', '₹25L+ Prize Pool', 'April 6–17 · Chennai', 'Sathak Thiruvizha 2026',
 ]
 
 function MarqueeTicker() {
@@ -388,7 +388,7 @@ export default function HomePage() {
                 <span className={styles.heroCardMetaLbl}>Days</span>
               </div>
               <div className={styles.heroCardMetaItem}>
-                <span className={styles.heroCardMetaNum}>₹10L</span>
+                <span className={styles.heroCardMetaNum}>₹25L+</span>
                 <span className={styles.heroCardMetaLbl}>Prizes</span>
               </div>
             </div>
@@ -539,10 +539,10 @@ export default function HomePage() {
               <p className="section-label" style={{ '--sa': '#00FF88' }}>✦ Sathakathon 2026</p>
               <h2 className={styles.hackTitle}>
                 <span style={{ color: '#00FF88' }}>SATHAK</span><br />
-                <span style={{ color: '#fff' }}>ATHON<br />2026</span>
+                <span style={{ color: '#fff' }}>A-THON<br />2026</span>
               </h2>
               <p className={styles.hackDesc}>
-                48 hours. Real problems. Legendary solutions. Join 500+ coders, designers,
+                25 hours. Real problems. Legendary solutions. Join 500+ coders, designers,
                 and innovators in MSAJCE's national hackathon.
               </p>
               <HackathonRegisterBtn />
@@ -560,7 +560,7 @@ export default function HomePage() {
                 {[
                   { pre: '$ ', text: 'sathakathon --init 2026', color: '#00FF88' },
                   { pre: '',   text: 'Loading hackathon environment...', color: 'rgba(255,255,255,0.3)' },
-                  { pre: '✓ ', label: 'Duration:', val: '48 Hours' },
+                  { pre: '✓ ', label: 'Duration:', val: '25 Hours' },
                   { pre: '✓ ', label: 'Teams:', val: '2–4 Members' },
                   { pre: '✓ ', label: 'Tracks:', val: 'AI · Web3 · HealthTech · GreenTech' },
                   { pre: '✓ ', label: 'Mentors:', val: 'Industry Leaders' },
@@ -598,9 +598,9 @@ export default function HomePage() {
         <div className={styles.prizeBg} />
         <div className={`${styles.prizeContent} reveal`}>
           <p className={styles.prizeEyebrow}>✦ Grand Prize Pool</p>
-          <div className={styles.prizeAmount}><span className={styles.prizeHighlight}>₹10,00,000</span></div>
+          <div className={styles.prizeAmount}><span className={styles.prizeHighlight}>₹25,00,000 +</span></div>
           <p className={styles.prizeDesc}>
-            Across 25+ events · 10 days of cash prizes, trophies, certificates & internship opportunities
+            Across 25+ events · 10 days of cash prizes, trophies, certificates , overall & internship opportunities
           </p>
           <button type="button" className={styles.prizeBtn} onClick={scrollToEvents} data-hover>
             Compete for It →
@@ -649,7 +649,7 @@ export default function HomePage() {
                 creativity, and celebration.
               </p>
               <p className={styles.aboutDesc}>
-                The 2026 edition — our Silver Jubilee — promises the grandest stage yet: 10 full days,
+                The 2026 edition — our 25th Silver Jubilee — promises the grandest stage yet: 10 full days,
                 bigger prize pools, more events, industry judges, and moments that follow you for life.
               </p>
               <div className={styles.aboutFeatures}>
