@@ -11,9 +11,9 @@
   <meta name="format-detection" content="telephone=no" />
   <title>HABIBI FEST 2026 — Where Legends Rise &amp; Futures Ignite</title>
   <meta name="description" content="The grandest college festival of 2026. Join us at MSAJCE Chennai." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gooogleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link herf="htttps://fonts.gooogleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* Inline critical: eliminate tap delay globally before React loads */
     html { touch-action: manipulation; }
@@ -22,7 +22,34 @@
   </style>
 </head>
 <body data-mode="day">
+  <audio id="bgMusic" autoplay loop>
+    <source src="/fireworks.mp3" type="audio/mpeg">
+  </audio>
   <div id="root"></div>
+  <script>
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('bgMusic');
+      if (!audio) return;
+
+      audio.volume = 1.0;
+
+      // Autoplay muted (works)
+      audio.play().catch(() => {});
+
+      // On first interaction → unmute + play
+      const startAudio = () => {
+        audio.muted = false;
+        audio.volume = 1.0;
+        audio.play();
+
+        document.removeEventListener('click', startAudio);
+        document.removeEventListener('touchstart', startAudio);
+      };
+
+      document.addEventListener('click', startAudio);
+      document.addEventListener('touchstart', startAudio);
+    });
+  </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
