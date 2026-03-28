@@ -1,0 +1,204 @@
+/* ══════════════════════════════════════════════════════════════
+   EVENT CARD — Festival Pink/Purple theme
+══════════════════════════════════════════════════════════════ */
+
+.card {
+  position: relative;
+  background: rgba(15, 5, 25, 0.82);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 0, 127, 0.12);
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, var(--accent, #ff007f) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,0,127,0.06);
+}
+
+.card:hover::after { opacity: 0.1; }
+
+.topBar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent, linear-gradient(90deg, #ff007f, #bf00ff));
+  box-shadow: 0 0 12px var(--accent, #ff007f);
+  opacity: 0.8;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease);
+}
+
+.card:hover .topBar { transform: scaleX(1); }
+
+.header { display: flex; align-items: center; gap: 12px; }
+.icon { font-size: 28px; line-height: 1; }
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.day {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255, 200, 220, 0.35);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent, #ff007f);
+  opacity: 0.82;
+  letter-spacing: 1px;
+}
+
+.desc {
+  font-size: 13.5px;
+  color: rgba(255, 200, 220, 0.7);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.meta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: rgba(255, 200, 220, 0.5);
+}
+
+.metaIcon { font-size: 13px; }
+
+.perks { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.perk {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border: 1px solid;
+  border-radius: 100px;
+  opacity: 0.85;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 0, 127, 0.1);
+  margin-top: auto;
+}
+
+.price { display: flex; align-items: baseline; gap: 2px; }
+
+.free {
+  font-family: var(--font-heading);
+  font-size: 18px; font-weight: 800;
+  color: #00ff88;
+}
+
+.priceCurr {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: rgba(255, 200, 220, 0.4);
+}
+
+.priceAmt {
+  font-family: var(--font-heading);
+  font-size: 22px; font-weight: 800;
+  color: #fff;
+}
+
+.pricePer {
+  font-size: 12px;
+  color: rgba(255, 200, 220, 0.35);
+  margin-left: 2px;
+}
+
+.regBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ff007f, #bf00ff);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 0 16px rgba(255, 0, 127, 0.25);
+}
+
+.regBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(255, 0, 127, 0.45);
+  filter: brightness(1.1);
+}
+
+.hackBadge {
+  margin-left: auto;
+  background: rgba(0,255,136,0.1);
+  border: 1px solid rgba(0,255,136,0.3);
+  color: #00ff88;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .card { padding: 20px 18px; gap: 12px; transition: border-color 0.3s; }
+  .card:hover { transform: none; }
+  .name { font-size: clamp(16px, 4.5vw, 20px); }
+  .desc { font-size: 13px; }
+  .icon { font-size: 24px; }
+  .regBtn { padding: 10px 16px; font-size: 11px; cursor: pointer; }
+  .meta { gap: 10px; }
+  .metaItem { font-size: 11px; }
+  .priceAmt { font-size: 18px; }
+  .free { font-size: 16px; }
+  .footer { flex-wrap: wrap; gap: 10px; }
+}

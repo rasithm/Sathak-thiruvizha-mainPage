@@ -1,0 +1,14 @@
+{
+  "name": "habibi-fest-2026",
+  "version": "1.0.0",
+  "description": "Sathak Thiruvizha 2026 Festival Website",
+  "type": "module",
+  "scripts": {
+    "install:all":  "cd client && npm install && cd ../server && npm install",
+    "dev:client":   "cd client && npm run dev",
+    "dev:server":   "cd server && npm run dev",
+    "build":        "cd client && npm run build",
+    "start":        "cd server && node index.js",
+    "deploy":       "npm run build && npm run start"
+  }
+}

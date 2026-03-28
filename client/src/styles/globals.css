@@ -1,0 +1,267 @@
+/* ─────────────────────────────────────────────────────────────
+   HABIBI FEST 2026 — Global Styles
+───────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700;900&family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --primary:   #ff007f;
+  --secondary: #bf00ff;
+  --accent:    #ff6b35;
+  --cyan:      #00f5ff;
+  --gold:      #ffd700;
+  --gold-l:    #fff4aa;
+  --gold-d:    #b8860b;
+  --green:     #00ff88;
+  --grad-primary: linear-gradient(135deg, #ff6b35, #ff007f, #bf00ff);
+  --grad-warm:    linear-gradient(135deg, #ff8c35, #ff007f);
+  --grad-cool:    linear-gradient(135deg, #bf00ff, #ff007f, #00f5ff);
+  --grad-text:    linear-gradient(135deg, #fff9e0 0%, #ffd700 28%, #ff8c69 60%, #ff3d7f 100%);
+  --deep:     #080810;
+  --surface:  #0c0c18;
+  --surface2: #12121f;
+  --border:   rgba(255, 0, 127, 0.18);
+  --border2:  rgba(255, 255, 255, 0.07);
+  --text:     #f0f0ff;
+  --text-dim: rgba(240, 240, 255, 0.65);
+  --glow-primary:  0 0 40px rgba(255, 0, 127, 0.4);
+  --glow-purple:   0 0 40px rgba(191, 0, 255, 0.4);
+  --glow-cyan:     0 0 40px rgba(0, 245, 255, 0.35);
+  --font-display: 'Bebas Neue', 'Montserrat', sans-serif;
+  --font-heading: 'Syne', 'Montserrat', sans-serif;
+  --font-body:    'Outfit', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+  --ease:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --vh: 1vh;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  overflow-x: hidden;
+  font-size: 16px;
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--deep);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: auto;
+}
+
+/* Custom cursor ONLY on real desktop mouse — never touch */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  button { cursor: none; }
+  .btn-primary, .btn-outline { cursor: none; }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button {
+  border: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* ── Day / Night / Festival mode ─────────────────────────── */
+[data-mode="night"]    { --card-bg: rgba(20,0,30,0.6); --card-border: rgba(191,0,255,0.25); --ui-glow: rgba(255,0,127,0.2); }
+[data-mode="festival"] { --card-bg: rgba(30,0,20,0.6); --card-border: rgba(255,107,53,0.35); --ui-glow: rgba(255,0,127,0.3); }
+
+/* ── Custom Cursor elements — hidden by default, shown on desktop ── */
+#cursor-dot {
+  display: none;
+  width: 8px; height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s var(--ease), background 0.2s;
+  box-shadow: 0 0 14px var(--primary), 0 0 28px rgba(255, 0, 127, 0.5);
+}
+#cursor-ring {
+  display: none;
+  width: 30px; height: 30px;
+  border: 1.5px solid rgba(255, 0, 127, 0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s;
+}
+@media (hover: hover) and (pointer: fine) {
+  #cursor-dot  { display: block; }
+  #cursor-ring { display: block; }
+}
+.cursor-hover #cursor-dot  { transform: translate(-50%, -50%) scale(2.5); background: var(--cyan); }
+.cursor-hover #cursor-ring { width: 48px; height: 48px; border-color: rgba(191, 0, 255, 0.5); }
+#cursor-dot  { z-index: 99999 !important; position: fixed !important; }
+#cursor-ring { z-index: 99998 !important; position: fixed !important; }
+body.intro-playing #cursor-dot, body.intro-playing #cursor-ring { opacity: 0 !important; }
+
+/* ── Canvas / Background ──────────────────────────────────── */
+#laser-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+canvas { pointer-events: none; will-change: transform; }
+
+/* ── Z-index layering ─────────────────────────────────────── */
+#root > * { position: relative; z-index: 10; }
+section, header, footer, nav { position: relative; z-index: 10; }
+
+/* ── Layout Utilities ─────────────────────────────────────── */
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+/* IMPORTANT: No contain:layout/style on .section — it breaks event propagation on mobile */
+.section { position: relative; z-index: 10; padding: 100px 0; }
+
+/* ── Typography ───────────────────────────────────────────── */
+.display-title { font-family: var(--font-display); font-size: clamp(52px, 9vw, 130px); letter-spacing: 4px; line-height: 0.88; }
+.section-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--primary); opacity: 0.85; }
+.section-title { font-family: var(--font-heading); font-size: clamp(28px, 4vw, 48px); font-weight: 800; line-height: 1.1; }
+
+/* ── Gradient Text ────────────────────────────────────────── */
+.gradient-gold { background: var(--grad-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.gradient-cyan { background: var(--grad-cool);    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ── Glass ────────────────────────────────────────────────── */
+.glass       { background: rgba(12,12,24,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); }
+.glass-light { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid var(--border2); }
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #ff007f, #bf00ff);
+  color: #fff; font-family: var(--font-heading); font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; padding: 14px 32px;
+  border-radius: 50px; transition: all 0.3s var(--ease); cursor: pointer;
+  box-shadow: 0 0 28px rgba(255, 0, 127, 0.35); position: relative; overflow: hidden;
+}
+.btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(255, 0, 127, 0.6), 0 0 80px rgba(191, 0, 255, 0.3); }
+.btn-primary:hover::before { left: 100%; }
+.btn-primary span { position: relative; z-index: 1; }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: var(--text); font-family: var(--font-heading);
+  font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  padding: 13px 30px; border-radius: 50px; border: 1px solid rgba(255, 0, 127, 0.4);
+  transition: all 0.3s var(--ease); cursor: pointer;
+}
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); box-shadow: inset 0 0 20px rgba(255, 0, 127, 0.07); }
+
+/* ── Divider ──────────────────────────────────────────────── */
+.ornament-divider { display: flex; align-items: center; gap: 16px; }
+.ornament-divider .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.4; }
+.ornament-divider .diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); box-shadow: 0 0 12px var(--gold); }
+
+/* ── Scroll Reveal ────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Badge ────────────────────────────────────────────────── */
+.badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 215, 0, 0.08); border: 1px solid rgba(255, 215, 0, 0.25); border-radius: 100px; padding: 7px 18px; }
+.badge-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 8px var(--gold); animation: pulse-dot 2s ease-in-out infinite; }
+.badge-text { font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--deep); }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--primary), var(--secondary)); border-radius: 2px; }
+.dayTabs::-webkit-scrollbar { display: none; }
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection { background: rgba(255, 0, 127, 0.25); color: #fff; }
+
+/* ── Modal ────────────────────────────────────────────────── */
+.modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-box { position: relative; max-height: 90vh; overflow-y: auto; animation: slideUp 0.4s var(--ease); scrollbar-width: thin; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+/* ── Hardware acceleration ────────────────────────────────── */
+.reveal, .statCard { transform: translateZ(0); backface-visibility: hidden; }
+
+/* ── Performance ──────────────────────────────────────────── */
+#events, #schedule, #about, #hackathon { content-visibility: auto; contain-intrinsic-size: 0 600px; }
+
+/* ── Select styles ────────────────────────────────────────── */
+select option { background-color: #12121F !important; color: #F0F0FF !important; }
+select { background-color: rgba(255,255,255,0.04); color: var(--text, #F0F0FF); }
+
+/* ── Admin pages ──────────────────────────────────────────── */
+body[data-admin="true"] { cursor: default; background: var(--deep); }
+body[data-admin="true"] button   { cursor: pointer; }
+body[data-admin="true"] a        { cursor: pointer; }
+body[data-admin="true"] select   { cursor: pointer; }
+body[data-admin="true"] input    { cursor: text; }
+body[data-admin="true"] textarea { cursor: text; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .section { padding: 60px 0; }
+}
+
+/* ══ MOBILE TOUCH FIX — 320px to 768px ══════════════════════
+   This block is the single source of truth for all touch devices.
+   cursor:none on any element PREVENTS click events on iOS/Android.
+   We override everything here unconditionally.
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  *, *::before, *::after {
+    /* Override any cursor:none from component CSS */
+    cursor: auto !important;
+  }
+  button, a, [role="button"], [data-hover],
+  input[type="button"], input[type="submit"], input[type="reset"],
+  label[for], select {
+    cursor: pointer !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #cursor-dot, #cursor-ring { display: none !important; opacity: 0 !important; }
+  .section { padding: 48px 0; }
+  .container { padding: 0 16px; }
+  .section-label { font-size: 9px; letter-spacing: 3px; }
+  .section-title { font-size: clamp(22px, 6vw, 36px); }
+}
+
+/* Safe area notched phones */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .section:last-of-type, footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .marqueeTrack { animation: none !important; }
+}

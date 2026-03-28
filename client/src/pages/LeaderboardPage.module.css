@@ -1,0 +1,240 @@
+.page { min-height: 100vh; padding-top: 70px; }
+
+/* Hero */
+.hero { position: relative; padding: 80px 24px 60px; text-align: center; overflow: hidden; }
+.heroBg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,0,127,0.08) 0%, transparent 70%); pointer-events: none; }
+.heroContent { position: relative; z-index: 1; }
+.eyebrow { font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,215,0,.7); margin-bottom: 12px; }
+.title { font-size: clamp(2.2rem,6vw,4rem); font-weight: 900; line-height: 1.1; color: #F0F0FF; margin-bottom: 16px; }
+.gold  { color: #ffd700; }
+.sub   { font-size: 1rem; color: rgba(255,255,255,.45); }
+
+/* Container */
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* Filter Tabs */
+.filterTabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; justify-content: center; }
+.filterTab {
+  padding: 9px 18px; border-radius: 50px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.55);
+  cursor: pointer; font-size: .82rem;
+  transition: all .2s; font-family: inherit;
+}
+.filterTab:hover { border-color: rgba(255,215,0,.4); color: #ffd700; }
+.filterTabActive { background: rgba(255,215,0,.10); border-color: #ffd700; color: #ffd700; font-weight: 700; }
+
+/* Sub filters */
+.subFilters { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; }
+.filterSelect {
+  padding: 9px 14px; border-radius: 8px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.14);
+  color: #F0F0FF; font-size: .85rem;
+  outline: none; cursor: pointer; font-family: inherit;
+  min-width: 160px;
+}
+.filterSelect:focus { border-color: rgba(255,0,127,.5); }
+
+/* Podium */
+.podium { display: flex; align-items: flex-end; justify-content: center; gap: 12px; margin: 40px 0 48px; }
+.podiumItem {
+  display: flex; flex-direction: column; align-items: center;
+  min-width: 120px;
+}
+.podiumFirst { transform: translateY(-12px); }
+.podiumMedal { font-size: 2rem; margin-bottom: 8px; }
+.podiumDept  { font-size: .85rem; font-weight: 700; color: var(--rank-color, #fff); text-align: center; margin-bottom: 4px; }
+.podiumYear  { font-size: .7rem; color: rgba(255,255,255,.4); margin-bottom: 6px; }
+.podiumScore { font-size: 1.1rem; font-weight: 800; color: var(--rank-color, #fff); margin-bottom: 8px; }
+.podiumScore span { font-size: .65rem; font-weight: 500; opacity: .6; }
+.podiumBase {
+  width: 100%; border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.1);
+  border-bottom: none;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--rank-color, #fff); font-weight: 700;
+}
+
+/* Table shared */
+.table { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); margin-bottom: 40px; }
+.tableHeader {
+  display: grid; padding: 12px 20px;
+  background: rgba(255,0,127,.08);
+  font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em;
+  color: rgba(255,215,0,.7);
+}
+.tableRow {
+  display: grid; padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,.05);
+  transition: background .2s;
+  align-items: center;
+}
+.tableRow:hover { background: rgba(255,255,255,.03); }
+.topRow { border-left: 3px solid var(--rank-color, transparent); }
+
+/* Column templates */
+.h3col, .r3col { grid-template-columns: 60px 1fr 120px; }
+.h4col, .r4col { grid-template-columns: 60px 1fr 130px 120px; }
+.h5col, .r5col { grid-template-columns: 60px 1fr 130px 100px 1fr; }
+
+/* Cells */
+.rankCell  { font-size: 1.1rem; }
+.rankNum   { font-size: .85rem; color: rgba(255,255,255,.4); font-weight: 600; }
+.deptCell  { font-weight: 600; color: #F0F0FF; font-size: .92rem; }
+.yearCell  { color: rgba(255,255,255,.5); font-size: .82rem; }
+.ptCell    { font-weight: 700; font-size: .9rem; text-align: right; }
+.reasonCell{ color: rgba(255,255,255,.35); font-size: .78rem; padding-left: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.positive  { color: #4ade80; }
+.negative  { color: #f87171; }
+
+/* Department nested view */
+.deptGroups { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.deptGroup { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); }
+.deptGroupHeader {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px;
+  background: rgba(255,0,127,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.deptGroupRank { font-size: 1.2rem; flex-shrink: 0; }
+.deptGroupName { flex: 1; font-weight: 700; color: #F0F0FF; font-size: 1rem; }
+.deptGroupTotal{ font-size: .85rem; font-weight: 700; }
+.yearRows { padding: 0; }
+.yearRow {
+  display: grid; grid-template-columns: 130px 1fr 110px;
+  padding: 10px 20px;
+  border-top: 1px solid rgba(255,255,255,.04);
+  align-items: center;
+}
+.yearRow:hover { background: rgba(255,255,255,.025); }
+.yearRowYear   { font-size: .82rem; color: rgba(255,215,0,.7); font-weight: 600; }
+.yearRowReason { font-size: .78rem; color: rgba(255,255,255,.3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.yearRowPts    { font-size: .88rem; font-weight: 700; text-align: right; }
+
+/* States */
+.loading { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 60px; color: rgba(255,255,255,.4); }
+.spinner { width: 36px; height: 36px; border-radius: 50%; border: 3px solid rgba(255,0,127,.15); border-top-color: #ff007f; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.errorBox { background: rgba(255,60,60,.1); border: 1px solid rgba(255,60,60,.3); border-radius: 10px; padding: 16px 20px; color: #ff8080; text-align: center; margin-bottom: 24px; }
+.empty { text-align: center; padding: 60px; color: rgba(255,255,255,.3); }
+
+/* Footer */
+.footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,.06); }
+.backLink { color: rgba(255,215,0,.7); font-size: .85rem; text-decoration: none; }
+.backLink:hover { color: #ff007f; }
+.note { font-size: .75rem; color: rgba(255,255,255,.25); }
+
+@media(max-width:600px) {
+  .h5col, .r5col { grid-template-columns: 50px 1fr 80px 70px; }
+  .r5col .reasonCell { display: none; }
+  .h5col span:last-child { display: none; }
+  .yearRow { grid-template-columns: 100px 1fr 90px; }
+}
+
+/* ── Full mobile overhaul ─────────────────────────────────── */
+@media(max-width: 768px) {
+  .container { padding: 0 14px 60px; }
+
+  /* hero */
+  .hero { padding: 50px 16px 40px; }
+  .title { font-size: clamp(28px, 8vw, 44px); }
+  .sub { font-size: 13px; }
+
+  /* filter tabs — horizontal scroll */
+  .filterTabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+  .filterTabs::-webkit-scrollbar { display: none; }
+  .filterTab {
+    flex-shrink: 0;
+    font-size: 11px;
+    padding: 8px 14px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  /* subfilters */
+  .subFilters { flex-direction: column; gap: 10px; }
+  .filterSelect { font-size: 13px; padding: 10px 12px; cursor: pointer; }
+
+  /* podium — scale down */
+  .podium { gap: 8px; padding: 16px 8px; }
+  .podiumDept { font-size: 12px; }
+  .podiumScore { font-size: 18px; }
+  .podiumMedal { font-size: 22px; }
+  .podiumItem { min-width: 80px; padding: 12px 8px 0; }
+
+  /* tables — horizontal scroll */
+  .table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12px;
+  }
+  .tableHeader, .tableRow { min-width: 480px; }
+  .h3col, .r3col { grid-template-columns: 48px 1fr 100px; }
+  .h4col, .r4col { grid-template-columns: 48px 1fr 80px 80px; }
+  .h5col, .r5col { grid-template-columns: 48px 1fr 70px 70px; }
+  .r5col .reasonCell, .h5col span:last-child { display: none; }
+  .rankCell { font-size: 14px; }
+  .ptCell { font-size: 13px; font-weight: 700; }
+
+  /* dept groups */
+  .deptGroups { gap: 12px; }
+  .deptGroupHeader { flex-wrap: wrap; gap: 6px; }
+  .deptGroupName { font-size: 15px; }
+  .deptGroupTotal { font-size: 13px; }
+  .yearRow { grid-template-columns: 90px 1fr 80px; gap: 8px; }
+  .yearRowYear { font-size: 11px; }
+  .yearRowPts { font-size: 13px; font-weight: 700; }
+
+  /* footer */
+  .footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .backLink { font-size: 14px; cursor: pointer; }
+}
+
+
+/* ── Responsive Leaderboard ─────────────────── */
+@media (max-width: 640px) {
+  .filterTabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .filterTabs::-webkit-scrollbar { display: none; }
+  .filterTab {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.75rem;
+  }
+  .subFilters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .subFilters::-webkit-scrollbar { display: none; }
+  .filterSelect { font-size: 0.8rem; padding: 7px 10px; }
+  .title { font-size: clamp(1.8rem, 6vw, 3rem); }
+  .sub { font-size: 0.85rem; }
+  .container { padding: 0 12px 60px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 60px 16px 40px; }
+  .filterTab { font-size: 0.7rem; padding: 7px 12px; }
+}

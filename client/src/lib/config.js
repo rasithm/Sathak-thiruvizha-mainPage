@@ -1,0 +1,215 @@
+export const CONFIG = {
+  FESTIVAL_NAME:  'SATHAK THIRUVIZHA FEST',
+  FESTIVAL_YEAR:  '2026',
+  TAGLINE:        'Where Legends Rise & Futures Ignite',
+  COLLEGE:        'Mohamed Sathak AJ College of Engineering',
+  LOCATION:       'MSAJCE, Siruseri IT Park, Chennai',
+  FESTIVAL_START: new Date('2026-04-06T09:00:00+05:30').getTime(),
+  FESTIVAL_END:   new Date('2026-04-17T23:00:00+05:30').getTime(),
+  EVENT_DATES: ['2026-04-06','2026-04-07','2026-04-08','2026-04-09','2026-04-10',
+                '2026-04-11','2026-04-13','2026-04-15','2026-04-16','2026-04-17'],
+}
+
+// ── 10 Event Days from Silver Jubilee Celebration Schedule ─────
+export const DAYS = [
+  {
+    id:       'day1',
+    label:    'DAY 01',
+    date:     'APR 6',
+    fullDate: 'April 6, 2026 — Monday',
+    theme:    'Grand Opening',
+    accent:   '#ff007f',
+    icon:     '🔥',
+    events: [
+      'Learnathon (ICT Academy · AIDS)',
+      "Engineer's Edge — Career Development Program",
+      'Red Shield Hackathon (IIC & CSI · CSCS)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day2',
+    label:    'DAY 02',
+    date:     'APR 7',
+    fullDate: 'April 7, 2026 — Tuesday',
+    theme:    'Tech & Science',
+    accent:   '#bf00ff',
+    icon:     '⚡',
+    events: [
+      'Sci Nova — Science Competition (S&H · Physics)',
+      'English Oratorical Competition (S&H · English)',
+      'Red Shield Hackathon Day 2 (CSCS)',
+      'IPR / Patent / Research Paper Writing (Research Cell)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day3',
+    label:    'DAY 03',
+    date:     'APR 8',
+    fullDate: 'April 8, 2026 — Wednesday',
+    theme:    'Maths & Culture',
+    accent:   '#ff6b35',
+    icon:     '🎨',
+    events: [
+      'Maths Quiz / Puzzle / Problem Solving (S&H · Maths)',
+      'Tamil Essay & Kavithai Competition (S&H · Tamil)',
+      'SDG Implementation Workshop / Seminar (IQAC)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day4',
+    label:    'DAY 04',
+    date:     'APR 9',
+    fullDate: 'April 9, 2026 — Thursday',
+    theme:    'Innovation Day',
+    accent:   '#00ff88',
+    icon:     '💻',
+    events: [
+      'Drobothon — Workshop Cum Competition (IETE · ECE & EEE)',
+      "Engineer's Edge — Career Development Program",
+      'Project X — 8 Hr Hackathon (IIC & SIIF · AIML)',
+      'Project Expo / Demonstration (All Departments)',
+      'Ideathon / Idea Generation Workshop (P&T Cell)',
+      'Mega Tree Plantation @ MSAJCE Campus (NSS)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day5',
+    label:    'DAY 05',
+    date:     'APR 10',
+    fullDate: 'April 10, 2026 — Friday',
+    theme:    'Design & Tech',
+    accent:   '#00f5ff',
+    icon:     '🏆',
+    events: [
+      'Design Thinking Workshop (IIC & SIIF · CSE)',
+      'VLSI Design Workshop Cum Competition (ICT Academy)',
+      'Workshop on RPA (CSI Chapter · CSBS)',
+      'Startup Entrepreneur Activity (SIIF · AIML)',
+      'Project Expo / Demonstration (All Departments)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day6',
+    label:    'DAY 06',
+    date:     'APR 11',
+    fullDate: 'April 11, 2026 — Saturday',
+    theme:    'Community Day',
+    accent:   '#ffd700',
+    icon:     '🌟',
+    events: [
+      'Business Model Generation (IIC & SIIF · CSE)',
+      'Beach Cleaning Drive (NSS)',
+      'VLSI Design Workshop Cum Competition (ICT Academy)',
+      'Workshop on RPA (CST & IETE · CSBS)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day7',
+    label:    'DAY 07',
+    date:     'APR 13',
+    fullDate: 'April 13, 2026 — Monday',
+    theme:    'Cultural & Events',
+    accent:   '#ff4444',
+    icon:     '🎭',
+    events: [
+      'Tamil Pattimandram (S&H · Tamil)',
+      'English Talk Action (S&H · English)',
+      'Embedded & IOT (IETE · ACT)',
+      'Model Making Competition (Civil & Mech)',
+      'Blood Donation Camp (NSS)',
+      'Technical Events (Students Team)',
+      'Non-Technical Events (Students Team)',
+      'Fine Arts & Cultural (All Departments)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day8',
+    label:    'DAY 08',
+    date:     'APR 15',
+    fullDate: 'April 15, 2026 — Wednesday',
+    theme:    'Fest & Hackathon',
+    accent:   '#39ff14',
+    icon:     '⚙️',
+    events: [
+      'Technical Events (Students Team)',
+      'Non-Technical Events (Students Team)',
+      'Fine Arts & Cultural (All Departments)',
+      'Village / Sipcot Cleanliness Drive (NSS)',
+      'Sathakathon — Hackathon (IIC & CSI · IT)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day9',
+    label:    'DAY 09',
+    date:     'APR 16',
+    fullDate: 'April 16, 2026 — Thursday',
+    theme:    'Grand Cultural',
+    accent:   '#ff8c00',
+    icon:     '🎪',
+    events: [
+      'Technical Events (Students Team)',
+      'Non-Technical Events (Dept of Mech)',
+      'Fine Arts & Cultural (All Departments)',
+      'Inter & Intra College Sports',
+    ],
+  },
+  {
+    id:       'day10',
+    label:    'DAY 10',
+    date:     'APR 17',
+    fullDate: 'April 17, 2026 — Friday',
+    theme:    'Grand Finale',
+    accent:   '#c0c0c0',
+    icon:     '🏅',
+    events: [
+      'Alumni Meet 2026 (All Departments)',
+      'Grand Finale — Silver Jubilee Celebration',
+    ],
+  },
+]
+
+export const CATEGORY_FILTERS = [
+  { id: 'all',       label: 'All Events',  icon: '🎯' },
+  { id: 'technical', label: 'Technical',   icon: '⚙️' },
+  { id: 'cultural',  label: 'Cultural',    icon: '🎭' },
+  { id: 'special',   label: 'Special',     icon: '⭐' },
+  { id: 'hackathon', label: 'Hackathon',   icon: '💻' },
+]
+
+export const STATS = [
+  { value: '5000+',    label: 'Participants Expected', display: null },
+  { value: '25+',      label: 'Events Across 10 Days', display: null },
+  { value: '1000000+', label: 'Prize Pool (₹)',         display: '₹10L+' },
+  { value: '50+',      label: 'Colleges Joining',       display: null },
+]
+
+export const NAV_LINKS = [
+  { label: 'Events',   href: '#events'   },
+  { label: 'Schedule', href: '#schedule' },
+  { label: 'About',    href: '#about'    },
+]
+
+// ── Unified festival color palette ─────────────────────────────
+export const CATEGORY_COLORS = {
+  technical: '#00f5ff',
+  cultural:  '#ff007f',
+  special:   '#ffd700',
+  hackathon: '#00ff88',
+}
+
+export const THEME = {
+  primary:   '#ff007f',
+  secondary: '#bf00ff',
+  accent:    '#ff6b35',
+  cyan:      '#00f5ff',
+  green:     '#00ff88',
+  gold:      '#ffd700',
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- maximum-scale=1 prevents iOS auto-zoom; user-scalable=no enables faster touch -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <!-- touch-action on html eliminates 300ms tap delay on all browsers -->
+  <meta name="theme-color" content="#080810" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>HABIBI FEST 2026 — Where Legends Rise &amp; Futures Ignite</title>
+  <meta name="description" content="The grandest college festival of 2026. Join us at MSAJCE Chennai." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Inline critical: eliminate tap delay globally before React loads */
+    html { touch-action: manipulation; }
+    body { margin: 0; background: #080810; }
+    #root { min-height: 100vh; }
+  </style>
+</head>
+<body data-mode="day">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
