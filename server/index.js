@@ -22,14 +22,18 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
 ]
+// app.use(cors({
+//   origin: (origin, cb) => {
+//     // Allow requests with no origin (mobile apps, curl, etc.)
+//     if (!origin || allowedOrigins.includes(origin)) return cb(null, true)
+//     cb(new Error('Not allowed by CORS'))
+//   },
+//   credentials: true
+// }))
 app.use(cors({
-  origin: (origin, cb) => {
-    // Allow requests with no origin (mobile apps, curl, etc.)
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true)
-    cb(new Error('Not allowed by CORS'))
-  },
+  origin: true,
   credentials: true
-}))
+}));
 
 app.use(express.json({ limit: '10mb' }))
 
