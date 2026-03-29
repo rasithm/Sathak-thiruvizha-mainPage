@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import frontImg from '../img/FRONT-MSAJCE.webp'
 import backImg  from '../img/BACK-MSAJCE.webp'
-import sathakLogoFull from '../img/sathak-logo-full.png'
-import sathakLogoIcon from '../img/sathak-logo-icon.png'
+import sathakLogoFull from '../img/sathak-logo-full1.png'
+import sathakLogoIcon from '../img/sathak-logo-icon1.png'
 
 export default function LandingPage() {
   const navigate = useNavigate()

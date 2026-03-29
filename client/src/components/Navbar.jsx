@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import sathakLogoFull from '../img/sathak-logo-full.png'
-import sathakLogoIcon from '../img/sathak-logo-icon.png'
+import sathakLogoFull from '../img/sathak-logo-full1.png'
+import sathakLogoIcon from '../img/sathak-logo-icon1.png'
 import styles from './Navbar.module.css'
 
 export default function Navbar({ onRegister, introActive = false }) {
