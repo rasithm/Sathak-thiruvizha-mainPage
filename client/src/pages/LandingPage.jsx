@@ -536,18 +536,18 @@ body.hbl-active{cursor:none;overflow-x:hidden}
 
         {/* S2 — ARRIVAL */}
         <section className="hbl-scene" id="hbl-s2">
-          <div className="hbl-blk">
+          <div className="hbl-blk" style={{display : 'flex' , flexDirection : 'column',alignItems : 'center'}}>
             <p className="hbl-lbl hbl-anim">The Campus Comes Alive</p>
-            <h2 className="hbl-h2 hbl-anim"><span className="hbl-gs">An Evening</span><br/>of Culture &amp; Joy</h2>
-            <p className="hbl-bod hbl-anim">As dusk paints the sky above our campus, every corner transforms. Food stalls glow, music rises, and the festival begins.</p>
-            <div className="hbl-cards">
+            <h2 className="hbl-h2 hbl-anim"><span className="hbl-gs">A 10 days of </span><br/>grand celebration</h2>
+            <p className="hbl-bod hbl-anim" >As dusk paints the sky above our campus, every corner transforms. Food stalls glow, music rises, and the festival begins.</p>
+            {/*<div className="hbl-cards">
               {[['🎭','Cultural Shows'],[' 🍢','Food Fiesta'],['🎨','Art Gallery'],['🎤','Live Music'],['🪔','Light Show']].map(([ico,lbl],i) => (
                 <div key={lbl} className="hbl-card hbl-anim" style={{ transitionDelay: `${(i+1)*.08}s` }}>
                   <div className="hbl-card-ico">{ico}</div>
                   <div className="hbl-card-lbl">{lbl}</div>
                 </div>
               ))}
-            </div>
+            </div>*/}
           </div>
         </section>
 
@@ -555,30 +555,33 @@ body.hbl-active{cursor:none;overflow-x:hidden}
         <section className="hbl-scene" id="hbl-s3">
           <div className="hbl-lasers">{[...Array(5)].map((_,i) => <div key={i} className="hbl-lz" />)}</div>
           <div className="hbl-led hbl-led-a" /><div className="hbl-led hbl-led-b" />
-          <div className="hbl-blk">
+          <div className="hbl-blk" style={{display : 'flex' , flexDirection : 'column',alignItems : 'center'}}>
             <p className="hbl-lbl hbl-anim">The Main Stage</p>
             <h2 className="hbl-h2 hbl-anim"><span className="hbl-gn">Feel the Beat.</span><br/>Feel the Energy.</h2>
             <p className="hbl-bod hbl-anim">The arena ignites under the open sky. DJ lights sweep across a thousand cheering faces. The bass drops and everything disappears.</p>
-            <div className="hbl-cards" style={{ marginTop:'36px' }}>
+            {/*<div className="hbl-cards" style={{ marginTop:'36px' }}>
               {[['🎧','DJ Night','rgba(0,245,255,.25)'],['💃','Dance Battle','rgba(191,0,255,.25)'],['🎸','Band Clash','rgba(255,0,127,.25)'],['🎤','Open Mic','rgba(255,215,0,.25)']].map(([ico,lbl,bc],i) => (
                 <div key={lbl} className="hbl-card hbl-anim" style={{ borderColor:bc, transitionDelay:`${(i+1)*.08}s` }}>
                   <div className="hbl-card-ico">{ico}</div><div className="hbl-card-lbl">{lbl}</div>
                 </div>
               ))}
-            </div>
+            </div>*/}
           </div>
         </section>
 
         {/* S4 — PARTY */}
         <section className="hbl-scene" id="hbl-s4">
           <div className="hbl-ring hbl-ring-a" /><div className="hbl-ring hbl-ring-b" /><div className="hbl-ring hbl-ring-c" />
-          <div className="hbl-blk">
+          <div className="hbl-blk" >
             <p className="hbl-lbl hbl-anim">Peak Celebration</p>
             <h2 className="hbl-h2 hbl-anim">Where Friends<br/><span className="hbl-gn">Become Memories</span></h2>
-            <div className="hbl-bars">{[...Array(10)].map((_,i) => <div key={i} className="hbl-bar" />)}</div>
-            <p className="hbl-bod hbl-anim">Confetti rains down. Neon floods every face. This is the moment you'll still be talking about years from now.</p>
+            {/*<div className="hbl-bars">{[...Array(10)].map((_,i) => <div key={i} className="hbl-bar" />)}</div>*/}
+            <div style={{display : 'flex' , flexDirection : 'column',alignItems : 'center' , margin: '5px' , marginBottom : '10px '}}>
+              <p className="hbl-bod hbl-anim">Confetti rains down. Neon floods every face. This is the moment you'll still be talking about years from now.</p>
+            </div>
+            
             <div className="hbl-evgrid">
-              {[['🏆 Competition','Mr & Ms Habibi'],['🎭 Showcase','Skit & Drama'],['🎨 Art','Face Painting'],['📸 Fun','Photo Booth'],['🍕 Food','Food Stalls'],['🎵 Music','Karaoke Night']].map(([cat,name],i) => (
+              {[[' Competition','🏆  Hackerthon'],['Showcase','🏅 Technical Events'],[' Art','🎶 Non-Technical Events'],['Fun','💃 Cultural'],[' Food','🍕 Food Stalls'],['Conducted','🎓 Workshop'],[' Fun','🔥 Flash bob'],['Physical activity','🏅 Sport meet']].map(([cat,name],i) => (
                 <div key={name} className="hbl-ev hbl-anim" style={{ transitionDelay:`${(i+1)*.06}s` }}>
                   <div className="hbl-ev-cat">{cat}</div>
                   <div className="hbl-ev-name">{name}</div>

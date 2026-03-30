@@ -37,16 +37,16 @@
   </style>
 </head>
 <body data-mode="day">
-  <audio id="bgMusic" autoplay loop>
+  <!-- <audio id="bgMusic" autoplay loop>
     <source src="/fireworks.mp3" type="audio/mpeg">
-  </audio>
+  </audio> -->
   <div id="root"></div>
-  <script>
+  <!-- <script>
     window.addEventListener('load', () => {
       const audio = document.getElementById('bgMusic');
       if (!audio) return;
 
-      audio.volume = 1.0;
+      audio.volume = 0.2;
 
       // Autoplay muted (works)
       audio.play().catch(() => {});
@@ -64,7 +64,7 @@
       document.addEventListener('click', startAudio);
       document.addEventListener('touchstart', startAudio);
     });
-  </script>
+  </script> -->
   <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
