@@ -135,10 +135,10 @@
   border-radius: 100px;
   padding: 7px 16px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255,200,220,0.8);
+  color: rgba(255, 255, 255, 0.904);
   width: fit-content;
   animation: fadeUp 0.7s ease 3.4s both;
 }

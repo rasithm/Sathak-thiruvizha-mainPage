@@ -388,7 +388,7 @@ export default function HomePage() {
                 <span className={styles.heroCardMetaLbl}>Days</span>
               </div>
               <div className={styles.heroCardMetaItem}>
-                <span className={styles.heroCardMetaNum}>₹25L+</span>
+                <span className={styles.heroCardMetaNum}>₹200,000+</span>
                 <span className={styles.heroCardMetaLbl}>Prizes</span>
               </div>
             </div>
@@ -546,7 +546,7 @@ export default function HomePage() {
                 and innovators in MSAJCE's national hackathon.
               </p>
               <HackathonRegisterBtn />
-              <div className={styles.hackPrize}>₹1,00,000+</div>
+              <div className={styles.hackPrize}>Exciting Cash Prizes</div>
               <p className={styles.hackPrizeLabel}>Total Prize Pool</p>
             </div>
 
@@ -562,9 +562,9 @@ export default function HomePage() {
                   { pre: '',   text: 'Loading hackathon environment...', color: 'rgba(255,255,255,0.3)' },
                   { pre: '✓ ', label: 'Duration:', val: '25 Hours' },
                   { pre: '✓ ', label: 'Teams:', val: '2–4 Members' },
-                  { pre: '✓ ', label: 'Tracks:', val: 'AI · Web3 · HealthTech · GreenTech' },
+                  { pre: '✓ ', label: 'Tracks:', val: 'AI · Web3 · StudentInnovation · GreenTech' },
                   { pre: '✓ ', label: 'Mentors:', val: 'Industry Leaders' },
-                  { pre: '✓ ', label: 'Prize Pool:', val: '₹1,00,000+' },
+                  { pre: '✓ ', label: 'Prize Pool:', val: 'Exciting Cash Prizes' },
                   { pre: '$ ', cursor: true },
                 ].map((line, i) => (
                   <div key={i} className={styles.termLine}>
@@ -579,7 +579,7 @@ export default function HomePage() {
                 ))}
               </div>
               <div className={styles.hackStats}>
-                {[['500+','Hackers'],['25','Hours'],['4','Tracks'],['50+','Mentors']].map(([n, l]) => (
+                {[['500+','Participants'],['25','Hours'],['4','Tracks'],['50+','Teams allowed']].map(([n, l]) => (
                   <div key={l} className={styles.hackStat}>
                     <span className={styles.hackStatNum}>{n}</span>
                     <span className={styles.hackStatLbl}>{l}</span>
@@ -597,7 +597,7 @@ export default function HomePage() {
       <section className={styles.prizeSection}>
         <div className={styles.prizeBg} />
         <div className={`${styles.prizeContent} reveal`}>
-          <p className={styles.prizeEyebrow}>✦ Grand Prize Pool</p>
+          <p className={styles.prizeEyebrow}>✦ Grand Overall Budget</p>
           <div className={styles.prizeAmount}><span className={styles.prizeHighlight}>₹25,00,000 +</span></div>
           <p className={styles.prizeDesc}>
             Across 50+ events · 10 days of cash prizes, trophies, certificates , overall & internship opportunities

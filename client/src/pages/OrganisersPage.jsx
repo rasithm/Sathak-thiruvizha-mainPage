@@ -94,7 +94,8 @@ function EventMemberGrid({ members, eventSlug }) {
   // Collapse when event changes
   useEffect(() => { setExpanded(false) }, [eventSlug])
 
-  const MOBILE_LIMIT = 3
+  // const MOBILE_LIMIT = 3
+  const MOBILE_LIMIT = 20
   // On desktop show all; on mobile show MOBILE_LIMIT unless expanded
   const visible = (isMobile && !expanded)
     ? members.slice(0, MOBILE_LIMIT)
