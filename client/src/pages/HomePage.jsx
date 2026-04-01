@@ -16,6 +16,7 @@ function useCountUp(target, duration = 1800) {
   const [started, setStarted] = useState(false)
   const ref = useRef(null)
 
+
   useEffect(() => {
     const el = ref.current
     if (!el) return
@@ -262,6 +263,9 @@ export default function HomePage() {
     return !alreadyShown
   })
 
+  const MOBILE_LIMIT = 3
+  const DESKTOP_LIMIT = 3
+
   useScrollReveal()
 
   // Track mobile breakpoint reactively
@@ -319,6 +323,26 @@ export default function HomePage() {
   const scrollToEvents = () => {
     document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  // ✅ Filter events by day + category
+  const filteredEvents = events.filter(e => {
+    return (
+      e.day === activeDay &&
+      (activeCategory === 'all' || e.category === activeCategory)
+    )
+  })
+
+  // ✅ Decide limit based on device
+  const limit = isMobile ? MOBILE_LIMIT : DESKTOP_LIMIT
+
+  // ✅ Apply slicing
+  const visibleEvents = showAllEvents
+    ? filteredEvents
+    : filteredEvents.slice(0, limit)
+
+  // ✅ Button conditions
+  const hasMore = filteredEvents.length > limit && !showAllEvents
+  const canShowLess = filteredEvents.length > limit && showAllEvents
 
   return (
     <>
@@ -493,7 +517,7 @@ export default function HomePage() {
 
 
           {/* Event Cards */}
-          <div className={styles.eventsGrid}>
+          {/* <div className={styles.eventsGrid}>
             {loadingEvents ? (
               <div className={styles.noEvents}>
                 <div style={{ textAlign: 'center', opacity: 0.5 }}>Loading events...</div>
@@ -525,6 +549,45 @@ export default function HomePage() {
             ) : (
               <div className={styles.noEvents}>No events found for this day/category.</div>
             )}
+          </div> */}
+          <div className={styles.eventsGrid}>
+            {loadingEvents ? (
+              <div className={styles.noEvents}>
+                <div style={{ textAlign: 'center', opacity: 0.5 }}>Loading events...</div>
+              </div>
+            ) : events.length > 0 ? (
+              <>
+                {visibleEvents.map((event, i) => (
+                  <EventCard
+                    key={event._id || i}
+                    event={event}
+                    delay={i * 0.05}
+                  />
+                ))}
+
+                {hasMore && (
+                  <button
+                    className={styles.showMoreEventsBtn}
+                    onClick={() => setShowAllEvents(true)}
+                  >
+                    ↓ See More
+                  </button>
+                )}
+
+                {canShowLess && (
+                  <button
+                    className={styles.showLessEventsBtn}
+                    onClick={() => setShowAllEvents(false)}
+                  >
+                    ↑ Show Less
+                  </button>
+                )}
+              </>
+              
+            ): (
+              <div className={styles.noEvents}>No events found for this day/category.</div>
+            )}
+            
           </div>
         </div>
       </section>
