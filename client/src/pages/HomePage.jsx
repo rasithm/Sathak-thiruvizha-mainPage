@@ -404,7 +404,7 @@ export default function HomePage() {
             <div className={styles.heroCardDivider} />
             <div className={styles.heroCardMeta}>
               <div className={styles.heroCardMetaItem}>
-                <span className={styles.heroCardMetaNum}>50+</span>
+                <span className={styles.heroCardMetaNum}>85+</span>
                 <span className={styles.heroCardMetaLbl}>Events</span>
               </div>
               <div className={styles.heroCardMetaItem}>
@@ -452,7 +452,7 @@ export default function HomePage() {
               <span className="gradient-gold">Arena</span>
             </h2>
             <p className={styles.sectionDesc}>
-              50+ competitions across 10 days — technical, cultural, and special.
+              85+ competitions across 10 days — technical, cultural, and special.
               One stage. Your moment.
             </p>
           </div>
@@ -663,7 +663,7 @@ export default function HomePage() {
           <p className={styles.prizeEyebrow}>✦ Grand Overall Budget</p>
           <div className={styles.prizeAmount}><span className={styles.prizeHighlight}>₹25,00,000 +</span></div>
           <p className={styles.prizeDesc}>
-            Across 50+ events · 10 days of cash prizes, trophies, certificates , overall & internship opportunities
+            Across 85+ events · 10 days of cash prizes, trophies, certificates , overall & internship opportunities
           </p>
           <button type="button" className={styles.prizeBtn} onClick={scrollToEvents} data-hover>
             Compete for It →
@@ -743,7 +743,7 @@ export default function HomePage() {
                 <div className={styles.aboutCardStats}>
                   <div><p className={styles.aboutStatNum}>2026</p><p className={styles.aboutStatLbl}>Edition</p></div>
                   <div><p className={styles.aboutStatNum}>10</p><p className={styles.aboutStatLbl}>Days</p></div>
-                  <div><p className={styles.aboutStatNum}>50+</p><p className={styles.aboutStatLbl}>Events</p></div>
+                  <div><p className={styles.aboutStatNum}>85+</p><p className={styles.aboutStatLbl}>Events</p></div>
                 </div>
               </div>
             </div>
