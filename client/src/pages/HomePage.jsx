@@ -264,7 +264,7 @@ export default function HomePage() {
   })
 
   const MOBILE_LIMIT = 3
-  const DESKTOP_LIMIT = 3
+  const DESKTOP_LIMIT = 9
 
   useScrollReveal()
 
