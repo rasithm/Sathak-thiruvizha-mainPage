@@ -105,7 +105,7 @@
 ─────────────────────────────────────────────────────────────── */
 .memberGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   align-items: start;
 }
@@ -326,7 +326,7 @@
   .eventHeader { gap: 12px; margin-bottom: 24px; }
   .memberGrid {
     /* Fixed 2-col: cards always fill 2 per row, no orphan stretch */
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
   .card { padding: 22px 14px 18px; }
@@ -337,7 +337,7 @@
 /* Small mobile (≤480px): 2 col with smaller cards */
 @media (max-width: 480px) {
   .memberGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 10px;
   }
   .card { padding: 18px 10px 14px; }
