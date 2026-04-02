@@ -581,7 +581,7 @@ body.hbl-active{cursor:none;overflow-x:hidden}
             </div>
             
             <div className="hbl-evgrid">
-              {[[' Competition','🏆  Hackerthon'],['Showcase','🏅 Technical Events'],[' Art','🎶 Non-Technical Events'],['Fun','💃 Cultural'],[' Food','🍕 Food Stalls'],['Conducted','🎓 Workshop'],[' Fun','🔥 Flash bob'],['Physical activity','🏅 Sport meet']].map(([cat,name],i) => (
+              {[[' Competition','🏆  Hackathon'],['Showcase','🏅 Technical Events'],[' Art','🎶 Non-Technical Events'],['Fun','💃 Cultural'],[' Food','🍕 Food Stalls'],['Conducted','🎓 Workshop'],[' Fun','🔥 Flash mob'],['Physical activity','🏅 Sport meet']].map(([cat,name],i) => (
                 <div key={name} className="hbl-ev hbl-anim" style={{ transitionDelay:`${(i+1)*.06}s` }}>
                   <div className="hbl-ev-cat">{cat}</div>
                   <div className="hbl-ev-name">{name}</div>
