@@ -9,6 +9,8 @@ import frontImg from '../img/FRONT-MSAJCE.webp'
 import backImg  from '../img/BACK-MSAJCE.webp'
 import rasithProfile from '../img/rasith-profile.jpg'
 import styles from './HomePage.module.css'
+import frontMobile from '../img/FRONT-MSAJCE - Mobile.webp'
+import backMobile from '../img/BACK-MSAJCE-mobile.webp'
 
 // ── Animated stat counter hook ────────────────────────────────
 function useCountUp(target, duration = 1800) {
@@ -129,8 +131,23 @@ function WorldCanvas() {
     const LANTERNS = Array.from({ length: 5 }, () => ({ x: Math.random(), y: .5 + Math.random() * .7, spd: .00038 + Math.random() * .0004, sw: Math.random() * Math.PI * 2, sws: .012 + Math.random() * .016, sz: 9 + Math.random() * 10, col: ['#ffd700','#ff8c00','#ffaa44'][Math.floor(Math.random() * 3)] }))
     const PARTS = Array.from({ length: 20 }, () => ({ x: Math.random(), y: Math.random(), vx: (Math.random() - .5) * .0003, vy: -(Math.random() * .0006 + .0001), r: Math.random() * 2.5 + .5, life: Math.random(), dec: .003 + Math.random() * .005, hue: Math.random() * 60 + 10 }))
 
-    const IMG_CAMPUS = new Image(); IMG_CAMPUS.loading = 'eager'; IMG_CAMPUS.src = frontImg
-    const IMG_STAGE  = new Image(); IMG_STAGE.loading  = 'eager'; IMG_STAGE.src  = backImg
+    // const IMG_CAMPUS = new Image(); IMG_CAMPUS.loading = 'eager'; IMG_CAMPUS.src = frontImg
+    // const IMG_STAGE  = new Image(); IMG_STAGE.loading  = 'eager'; IMG_STAGE.src  = backImg
+    const IMG_CAMPUS = new Image()
+    const IMG_STAGE = new Image()
+
+    const setImages = () => {
+      const isMobileView = window.innerWidth <= 800
+
+      IMG_CAMPUS.src = isMobileView ? frontMobile : frontImg
+      IMG_STAGE.src = isMobileView ? backMobile : backImg
+    }
+
+    IMG_CAMPUS.loading = 'eager'
+    IMG_STAGE.loading = 'eager'
+
+    setImages()
+    window.addEventListener('resize', setImages)
 
     function drawWorld() {
       const t = getT()
@@ -321,13 +338,21 @@ export default function HomePage() {
   }, [activeDay, activeCategory])
 
   useEffect(() => {
-    fetchSiteStats().then(data => {
+  async function loadStats() {
+    try {
+      const data = await fetchSiteStats()
       setStats({
-  visits: data.visitCount || 0,
-  likes: data.likeCount || 0
-})
-    }).catch(console.error)
-  }, [])
+        visits: data.visitCount || 0,
+        likes: data.likeCount || 0
+      })
+    } catch (err) {
+      console.error('Stats fetch failed:', err)
+      setStats({ visits: 0, likes: 0 })
+    }
+  }
+
+  loadStats()
+}, [])
 
   
 
