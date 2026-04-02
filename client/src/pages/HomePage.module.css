@@ -1033,7 +1033,12 @@
 
 .aboutFeatureItem:hover { background: rgba(255,0,127,0.08); }
 .aboutFeatureIcon { font-size: 18px; flex-shrink: 0; }
-.aboutVisual { display: flex; justify-content: center; }
+.aboutVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
 
 .aboutCard {
   position: relative;
@@ -1091,6 +1096,23 @@
   padding-top: 28px;
   border-top: 1px solid rgba(255,0,127,0.12);
 }
+.aboutCardEyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,200,220,0.35);
+  margin-bottom: 14px;
+}
+
+.aboutCardName {
+  font-family: var(--font-heading);
+  font-size: 22px; font-weight: 800;
+  color: #fff;
+  line-height: 1.35;
+}
+
+
 
 .aboutStatNum {
   font-family: var(--font-display);
@@ -1773,9 +1795,185 @@
   line-height: 1.4;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   SITE STATS CARD — below the "Organised by" card
+══════════════════════════════════════════════════════════════ */
+.siteStatsCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 14px;
+  width: 100%;
+  max-width: 380px;
+  background: rgba(8, 4, 20, 0.88);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 14px;
+  padding: 16px 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,215,0,0.05);
+}
+
+.siteStatItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+}
+
+.siteStatIcon {
+  font-size: 16px;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.siteStatNum {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 1px;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffd700, #ff8c35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.siteStatLbl {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 200, 220, 0.35);
+}
+
+.siteStatDivider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 215, 0, 0.12);
+  flex-shrink: 0;
+  margin: 0 4px;
+}
+
+/* Like button inside stats card */
+.siteStatLikeBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  padding: 6px 10px;
+  background: rgba(255, 100, 100, 0.07);
+  border: 1px solid rgba(255, 100, 100, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.siteStatLikeBtn:hover:not(:disabled) {
+  background: rgba(255, 100, 100, 0.15);
+  border-color: rgba(255, 100, 100, 0.45);
+  transform: scale(1.05);
+}
+
+.siteStatLikeBtn:disabled {
+  opacity: 0.6;
+}
+
+.siteStatLikeBtnActive {
+  background: rgba(255, 60, 60, 0.12) !important;
+  border-color: rgba(255, 80, 80, 0.5) !important;
+}
+
+.siteStatLikeHeart {
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.siteStatLikeBtn:not(:disabled):active .siteStatLikeHeart {
+  transform: scale(1.4);
+}
+
+.siteStatLikeBtn span:last-child {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 200, 220, 0.5);
+}
+
+.siteStatLikeBtnActive span:last-child {
+  color: rgba(255, 120, 120, 0.8);
+}
+
+/* ── Dev Card: Like Button ─────────────────────────────────── */
+.devCardLikeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  padding: 7px 10px;
+  background: rgba(255, 100, 100, 0.07);
+  border: 1px solid rgba(255, 100, 100, 0.2);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 2px;
+}
+
+.devCardLikeBtn:hover:not(:disabled) {
+  background: rgba(255, 100, 100, 0.15);
+  border-color: rgba(255, 100, 100, 0.45);
+  transform: scale(1.04);
+}
+
+.devCardLikeBtn:disabled { opacity: 0.6; }
+
+.devCardLikeBtnActive {
+  background: rgba(255, 60, 60, 0.14) !important;
+  border-color: rgba(255, 80, 80, 0.5) !important;
+}
+
+.devCardLikeBtn span:first-child {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.devCardLikeBtn span:last-child {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(255, 200, 200, 0.6);
+}
+
+.devCardLikeBtnActive span:last-child {
+  color: rgba(255, 120, 120, 0.9);
+}
+
 /* Footer needs position: relative for the absolute card */
 .footer {
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .siteStatsCard {
+    max-width: 100%;
+    padding: 14px 16px;
+  }
+  .siteStatNum { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .siteStatsCard { padding: 12px 10px; gap: 0; }
+  .siteStatNum { font-size: 16px; }
+  .siteStatIcon { font-size: 14px; }
 }
 
 @media (max-width: 768px) {

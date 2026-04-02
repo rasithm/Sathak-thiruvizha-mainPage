@@ -59,3 +59,17 @@ export async function adminGetNextTag(eventSlug) { return handle(await fetch(`${
 export async function adminCreateMember(data) { return handle(await fetch(`${BASE}/members`, { method:'POST', headers:authHeaders(), body:JSON.stringify(data) })) }
 export async function adminUpdateMember(id, data) { return handle(await fetch(`${BASE}/members/${id}`, { method:'PUT', headers:authHeaders(), body:JSON.stringify(data) })) }
 export async function adminDeleteMember(id) { return handle(await fetch(`${BASE}/members/${id}`, { method:'DELETE', headers:authHeaders() })) }
+
+
+// ── SITE STATS (visits + likes)
+export async function fetchSiteStats() {
+  return handle(await fetch(`${BASE}/sitestats`))
+}
+
+export async function toggleSiteLike(action) {
+  return handle(await fetch(`${BASE}/sitestats/like`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action }),
+  }))
+}

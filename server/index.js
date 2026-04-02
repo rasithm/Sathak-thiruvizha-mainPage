@@ -9,7 +9,7 @@ import authRoutes   from './routes/auth.js'
 import eventRoutes  from './routes/events.js'
 import deptRoutes   from './routes/deptpoints.js'
 import memberRoutes from './routes/members.js'
-
+import siteStatsRoutes from './routes/sitestats.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname  = path.dirname(__filename)
 
@@ -43,7 +43,7 @@ app.use('/api/events',     eventRoutes)
 app.use('/api/deptpoints', deptRoutes)
 app.use('/api/members',    memberRoutes)
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date() }))
-
+app.use('/api/sitestats', siteStatsRoutes)
 // ── Serve React Frontend (production) ────────────────────────
 // The built frontend lives at ../client/dist
 const clientDist = path.join(__dirname, '..', 'client', 'dist')

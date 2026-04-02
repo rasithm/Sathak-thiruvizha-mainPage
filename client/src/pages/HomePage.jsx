@@ -4,7 +4,7 @@ import Countdown from '../components/Countdown'
 import EventCard from '../components/EventCard'
 import useScrollReveal from '../hooks/useScrollReveal'
 import { CONFIG, DAYS, CATEGORY_FILTERS, STATS, CATEGORY_COLORS } from '../lib/config'
-import { getEvents } from '../lib/api'
+import { getEvents, fetchSiteStats, toggleSiteLike } from '../lib/api'
 import frontImg from '../img/FRONT-MSAJCE.webp'
 import backImg  from '../img/BACK-MSAJCE.webp'
 import rasithProfile from '../img/rasith-profile.jpg'
@@ -319,6 +319,37 @@ export default function HomePage() {
       })
       .finally(() => setLoadingEvents(false))
   }, [activeDay, activeCategory])
+
+  useEffect(() => {
+    fetchSiteStats().then(data => {
+      setStats({
+  visits: data.visitCount || 0,
+  likes: data.likeCount || 0
+})
+    }).catch(console.error)
+  }, [])
+
+  
+
+  async function handleLike() {
+  try {
+    const action = liked ? 'remove' : 'add'
+    const data = await toggleSiteLike(action)
+
+    setStats(prev => ({
+      ...prev,
+      likes: data.likeCount || 0
+    }))
+
+    setLiked(!liked)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+
+  const [stats, setStats] = useState({ visits: 0, likes: 0 })
+  const [liked, setLiked] = useState(false)
 
   const scrollToEvents = () => {
     document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })
@@ -746,6 +777,36 @@ export default function HomePage() {
                   <div><p className={styles.aboutStatNum}>85+</p><p className={styles.aboutStatLbl}>Events</p></div>
                 </div>
               </div>
+
+              {/* ── Site Stats Card ─────────────────────────── */}
+              <div className={styles.siteStatsCard}>
+                <div className={styles.siteStatItem}>
+                  <span className={styles.siteStatIcon}>👁️</span>
+                  <span className={styles.siteStatNum}>
+                    {(stats.visits || 0).toLocaleString()}
+                  </span>
+                  <span className={styles.siteStatLbl}>Visits</span>
+                </div>
+                <div className={styles.siteStatDivider} />
+                <div className={styles.siteStatItem}>
+                  <span className={styles.siteStatIcon}>❤️</span>
+                  <span className={styles.siteStatNum}>
+                    {(stats.likes || 0).toLocaleString()}
+                  </span>
+                  <span className={styles.siteStatLbl}>Likes</span>
+                </div>
+                <div className={styles.siteStatDivider} />
+                <button
+                  type="button"
+                  className={`${styles.siteStatLikeBtn} ${liked ? styles.siteStatLikeBtnActive : ''}`}
+                  onClick={handleLike}
+                  disabled={false}
+                  aria-label={liked ? 'Unlike' : 'Like this site'}
+                >
+                  <span className={styles.siteStatLikeHeart}>{liked ? '❤️' : '🤍'}</span>
+                  <span>{liked ? 'Liked!' : 'Like'}</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -783,6 +844,7 @@ export default function HomePage() {
                 <a href="#events" onClick={e => { e.preventDefault(); document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' }) }}>Hackathon</a>
               </div>
             </div>
+
 
             <div className={styles.footerCol}>
               <p className={styles.footerColTitle}>Contact</p>
@@ -825,6 +887,17 @@ export default function HomePage() {
               </div>
             </div>
             <p className={styles.devCardQuote}>" I tried my best "</p>
+            {/* Like button — 1 per browser */}
+            <button
+              type="button"
+              className={`${styles.devCardLikeBtn} ${liked ? styles.devCardLikeBtnActive : ''}`}
+              onClick={handleLike}
+              disabled={false}
+              aria-label={liked ? 'Unlike' : 'Like'}
+            >
+              <span>{liked ? '❤️' : '🤍'}</span>
+              <span>{(stats.likes || 0).toLocaleString()}</span>
+            </button>
           </div>
         </div>
       </footer>
