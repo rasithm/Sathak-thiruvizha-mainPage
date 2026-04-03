@@ -275,6 +275,7 @@ export default function HomePage() {
   const [loadingEvents,  setLoadingEvents]  = useState(true)
   const [showAllEvents,  setShowAllEvents]  = useState(false)
   const [isMobile,       setIsMobile]       = useState(false)
+  const [likeLoading, setLikeLoading] = useState(false)
   const [showIntro, setShowIntro] = useState(() => {
     const alreadyShown = sessionStorage.getItem('hbl-intro-shown') === '1'
     return !alreadyShown
@@ -337,22 +338,7 @@ export default function HomePage() {
       .finally(() => setLoadingEvents(false))
   }, [activeDay, activeCategory])
 
-  useEffect(() => {
-  async function loadStats() {
-    try {
-      const data = await fetchSiteStats()
-      setStats({
-        visits: data.visitCount || 0,
-        likes: data.likeCount || 0
-      })
-    } catch (err) {
-      console.error('Stats fetch failed:', err)
-      setStats({ visits: 0, likes: 0 })
-    }
-  }
-
-  loadStats()
-}, [])
+  
 
 // 🔥 AUTO REFRESH EVERY 10 SECONDS
 useEffect(() => {
@@ -365,27 +351,55 @@ useEffect(() => {
   return () => clearInterval(interval)
 }, [activeDay, activeCategory])
 
+useEffect(() => {
+  async function loadStats() {
+    try {
+      const data = await fetchSiteStats()
+
+      setStats({
+        visits: data.visitCount,
+        likes: data.likeCount
+      })
+
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  loadStats()
+}, [])
+
   
 
   async function handleLike() {
-  try {
-    const action = liked ? 'remove' : 'add'
-    const data = await toggleSiteLike(action)
+    if (likeLoading) return // 🚫 prevent spam
 
-    setStats(prev => ({
-      ...prev,
-      likes: data.likeCount || 0
-    }))
+    setLikeLoading(true)
 
-    setLiked(!liked)
-  } catch (err) {
-    console.error(err)
+    try {
+      const data = await toggleSiteLike(liked ? 'remove' : 'add')
+
+      setStats(prev => ({
+  ...prev,
+  likes: liked ? prev.likes - 1 : prev.likes + 1
+}))
+
+      const newLiked = !liked
+      setLiked(newLiked)
+      localStorage.setItem('liked', newLiked)
+
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLikeLoading(false)
+    }
   }
-}
 
 
-  const [stats, setStats] = useState({ visits: 0, likes: 0 })
-  const [liked, setLiked] = useState(false)
+  const [stats, setStats] = useState(null)
+  const [liked, setLiked] = useState(() => {
+    return localStorage.getItem('liked') === 'true'
+  })
 
   const scrollToEvents = () => {
     document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })
@@ -819,7 +833,7 @@ useEffect(() => {
                 <div className={styles.siteStatItem}>
                   <span className={styles.siteStatIcon}>👁️</span>
                   <span className={styles.siteStatNum}>
-                    {(stats.visits || 0).toLocaleString()}
+                    {stats ? stats.visits.toLocaleString() : '...'}
                   </span>
                   <span className={styles.siteStatLbl}>Visits</span>
                 </div>
@@ -827,7 +841,7 @@ useEffect(() => {
                 <div className={styles.siteStatItem}>
                   <span className={styles.siteStatIcon}>❤️</span>
                   <span className={styles.siteStatNum}>
-                    {(stats.likes || 0).toLocaleString()}
+                    {stats ? stats.likes.toLocaleString() : '...'}
                   </span>
                   <span className={styles.siteStatLbl}>Likes</span>
                 </div>
@@ -836,7 +850,7 @@ useEffect(() => {
                   type="button"
                   className={`${styles.siteStatLikeBtn} ${liked ? styles.siteStatLikeBtnActive : ''}`}
                   onClick={handleLike}
-                  disabled={false}
+                  disabled={likeLoading}
                   aria-label={liked ? 'Unlike' : 'Like this site'}
                 >
                   <span className={styles.siteStatLikeHeart}>{liked ? '❤️' : '🤍'}</span>
@@ -928,11 +942,11 @@ useEffect(() => {
               type="button"
               className={`${styles.devCardLikeBtn} ${liked ? styles.devCardLikeBtnActive : ''}`}
               onClick={handleLike}
-              disabled={false}
+              disabled={likeLoading}
               aria-label={liked ? 'Unlike' : 'Like'}
             >
               <span>{liked ? '❤️' : '🤍'}</span>
-              <span>{(stats.likes || 0).toLocaleString()}</span>
+              <span>{(stats?.likes || 0).toLocaleString()}</span>
             </button>
           </div>
         </div>

@@ -117,4 +117,41 @@ router.post('/seed/init', authMiddleware, async (req, res) => {
   }
 })
 
+// GET /api/events/names/sorted
+// GET /api/events/names/sorted
+router.get('/names/sorted', async (req, res) => {
+  try {
+    const events = await Event.aggregate([
+      {
+        $match: { isActive: true } // optional
+      },
+      {
+        $addFields: {
+          parsedDate: {
+            $dateFromString: {
+              dateString: "$date",
+              format: "%B %d, %Y"
+            }
+          }
+        }
+      },
+      {
+        $sort: { parsedDate: 1 }
+      },
+      {
+        $project: {
+          _id: 0,
+          name: 1,
+          date: 1,
+          googleFormLink: 1
+        }
+      }
+    ])
+
+    res.json(events)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
 export default router
