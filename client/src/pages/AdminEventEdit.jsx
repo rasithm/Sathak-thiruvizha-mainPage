@@ -28,6 +28,7 @@ const EMPTY = {
   category: 'technical',
   venue: '', seatCapacity: 100, teamSize: 'Individual',
   entryFee: 0,
+  feeType: 'per_team',
   googleFormLink: '', hackathonLink: '',
   isHackathon: false,
   cashPrize: '',
@@ -350,6 +351,16 @@ export default function AdminEventEdit() {
             <Field label="Entry Fee (₹)">
               <input className={styles.input} type="number" value={form.entryFee}
                 onChange={e => set('entryFee', e.target.value)} placeholder="0 = Free" />
+            </Field>
+            <Field label="Fee Type">
+              <select
+                className={styles.select}
+                value={form.feeType}
+                onChange={e => set('feeType', e.target.value)}
+              >
+                <option value="per_team">Per Team</option>
+                <option value="per_head">Per Head</option>
+              </select>
             </Field>
           </Row>
 

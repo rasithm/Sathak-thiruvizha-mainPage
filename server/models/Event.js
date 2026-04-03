@@ -31,6 +31,12 @@ const eventSchema = new mongoose.Schema({
 
   // Registration
   entryFee:       { type: Number, default: 0 },
+  // NEW FIELD (safe addition)
+  feeType: {
+    type: String,
+    enum: ['per_head', 'per_team'],
+    default: 'per_team', // fallback for old data
+  },
   googleFormLink: { type: String, default: '' },  // students click Register → go here
   isHackathon:    { type: Boolean, default: false },
   hackathonLink:  { type: String, default: '' },  // special link for hackathon
