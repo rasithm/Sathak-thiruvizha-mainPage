@@ -354,6 +354,17 @@ export default function HomePage() {
   loadStats()
 }, [])
 
+// 🔥 AUTO REFRESH EVERY 10 SECONDS
+useEffect(() => {
+  const interval = setInterval(() => {
+    getEvents({ day: activeDay, category: activeCategory })
+      .then(data => setEvents(data))
+      .catch(() => {})
+  }, 10000)
+
+  return () => clearInterval(interval)
+}, [activeDay, activeCategory])
+
   
 
   async function handleLike() {
@@ -878,7 +889,7 @@ export default function HomePage() {
                   <span>✉</span><span>studentassociation@msajce-edu.in</span>
                 </a>
                 <a href="tel:+919876543210" className={styles.footerContactItem}>
-                  <span>📞</span><span>+91 98765 43210</span>
+                  <span>📞</span><span>+91 6374642974</span>
                 </a>
               </div>
             </div>

@@ -107,7 +107,7 @@ export default function EventCard({ event, delay = 0 }) {
               <span className={styles.priceCurr}>₹</span>
               <span className={styles.priceAmt}>{event.entryFee}</span>
               <span className={styles.pricePer}>
-                /{event.feeType === 'per_head' ? 'head' : 'team'}
+                /{(event.feeType || 'per_team') === 'per_head' ? 'head' : 'team'}
               </span>
             </>
           )}

@@ -174,6 +174,16 @@ export default function AdminEventEdit() {
       } else {
         await adminUpdateEvent(id, payload)
         setSuccess('Event updated successfully!')
+
+        // 🔥 Refresh current form data (no navigation)
+        const updated = await adminGetEvents()
+        const current = updated.find(e => e._id === id)
+        if (current) {
+          setForm(f => ({
+            ...f,
+            ...current
+          }))
+        }
       }
     } catch (e) {
       setError(e.message)

@@ -15,7 +15,14 @@ router.get('/', async (req, res) => {
     if (req.query.category && req.query.category !== 'all') filter.category = req.query.category
 
     const events = await Event.find(filter).sort({ day: 1, order: 1 })
-    res.json(events)
+
+    // 🔥 Ensure feeType always exists
+    const safeEvents = events.map(ev => ({
+      ...ev.toObject(),
+      feeType: ev.feeType || 'per_team',
+    }))
+
+    res.json(safeEvents)
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
@@ -53,6 +60,7 @@ router.get('/admin/all', authMiddleware, async (req, res) => {
 // POST /api/events — create new event
 router.post('/', authMiddleware, async (req, res) => {
   try {
+    res.set('Cache-Control', 'no-store') // 🔥 IMPORTANT
     const event = new Event(req.body)
     await event.save()
     res.status(201).json(event)
