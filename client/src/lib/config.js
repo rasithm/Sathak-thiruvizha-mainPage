@@ -186,7 +186,7 @@ export const CATEGORY_FILTERS = [
 
 export const STATS = [
   { value: '5000+',    label: 'Participants Expected', display: null },
-  { value: '85+',      label: 'Events Across 10 Days', display: null },
+  { value: '100+',      label: 'Events Across 10 Days', display: null },
   { value: '2,00,000+', label: 'Prize Pool (₹)',         display: null },
   { value: '50+',      label: 'Colleges Joining',       display: null },
 ]
